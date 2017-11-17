@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base page</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'index_page' %}">Test</a></h1>
+        {% if user.is_authenticated %}
+            <p>Hello {{ user.username }}</p>
+            <a href="{% url 'logout_page' %}">Logout</a>
+            <a href="/auth/change/{{ user.id }}/">Change Profile</a>
+        {% else %}
+
+            <a href="{% url 'login_page' %}">Login</a>
+            <a href="{% url 'register_page' %}">Register</a>
+        {% endif %}
+    </header>
+    <div>
+        {% block content_block %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

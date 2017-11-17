@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content_block %}
+    <form id="change_form" method="post" action="/auth/change/{{ user.id }}/"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ errors }}</p>
+        {{ change_user_form.as_p }}
+        <input type="submit" name="submit" value="Change" />
+    </form>
+{% endblock %}
